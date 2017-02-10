@@ -8,7 +8,7 @@ A docker image for running ZooKeeper ensemble in Kubernetes.
 
 ## Supported tags
 
-`latest`/`3.4.4-0.1.0` (ZooKeeper v3.4.5)
+`latest`/`3.4.5-0.1.0` (ZooKeeper v3.4.5)
 
 Naming convention for images is `$ZK_VERSION`-`$KUBE_ZK_VERSION`
 
