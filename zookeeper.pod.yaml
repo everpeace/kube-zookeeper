@@ -12,7 +12,7 @@ spec:
   subdomain: zookeeper
   containers:
     - name: zookeeper-server
-      image: everpeace/kube-zookeeper:3.4.5
+      image: everpeace/kube-zookeeper
       env:
       - name: "KUBE_ZK_MY_ID"
         value: "1"
@@ -46,7 +46,7 @@ spec:
   subdomain: zookeeper
   containers:
     - name: zookeeper-server
-      image: everpeace/kube-zookeeper:3.4.5
+      image: everpeace/kube-zookeeper
       env:
       - name: "KUBE_ZK_MY_ID"
         value: "2"
@@ -80,7 +80,7 @@ spec:
   subdomain: zookeeper
   containers:
     - name: zookeeper-server
-      image: everpeace/kube-zookeeper:3.4.5
+      image: everpeace/kube-zookeeper
       env:
       - name: "KUBE_ZK_MY_ID"
         value: "3"

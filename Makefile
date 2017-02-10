@@ -5,6 +5,7 @@ REPOSITORY ?= everpeace/kube-zookeeper
 TAG ?= $(ZK_VERSION)-$(KUBE_ZK_VERSION)
 IMAGE ?= $(REPOSITORY):$(TAG)
 ALIAS ?= $(REPOSITORY):$(ZK_VERSION)
+LATEST ?= $(REPOSITORY):latest
 
 BUILD_ROOT ?= build/$(TAG)
 DOCKERFILE ?= $(BUILD_ROOT)/Dockerfile
@@ -22,7 +23,7 @@ clean:
 	rm -rf $(BUILD_ROOT)
 
 publish:
-	docker push $(IMAGE) && docker push $(ALIAS)
+	docker tag $(IMAGE) $(LATEST) && docker push $(IMAGE) && docker push $(ALIAS) && docker push $(LATEST)
 
 $(DOCKERFILE): $(BUILD_ROOT)
 	sed 's/%%ZK_VERSION%%/'"$(ZK_VERSION)"'/g;' Dockerfile.template > $(DOCKERFILE)
