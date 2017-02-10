@@ -1,0 +1,15 @@
+---
+# headless service for subdomain of zookeeper ensemble
+# ensamble1.{namespace}.svc.{cluster_domain}
+apiVersion: v1
+kind: Service
+metadata:
+  name: zookeeper
+spec:
+  selector:
+    component: zookeeper
+    ensemble: zookeeper
+  clusterIP: None
+  ports:
+  - name: dummy
+    port: 1234

@@ -1,0 +1,102 @@
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: zookeeper-myid-1
+  labels:
+    component: zookeeper
+    ensemble: zookeeper
+    myid: "1"
+spec:
+  hostname: myid-1
+  subdomain: zookeeper
+  containers:
+    - name: zookeeper-server
+      image: everpeace/kube-zookeeper:3.4.5
+      env:
+      - name: "KUBE_ZK_MY_ID"
+        value: "1"
+      - name: "KUBE_ZK_MAX_SERVERS"
+        value: "3"
+      - name: "KUBE_ZK_HOSTNAME_PREFIX"
+        value: "myid-"
+      - name: "KUBE_ZK_SUB_DOMAIN"
+        value: zookeeper
+      - name: "NAMESPACE"
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.namespace
+      - name: "CLUSTER_DOMAIN"
+        value: "cluster.local"
+      ports:
+        - containerPort: 2181
+        - containerPort: 2888
+        - containerPort: 3888
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: zookeeper-myid-2
+  labels:
+    component: zookeeper
+    ensemble: zookeeper
+    myid: "2"
+spec:
+  hostname: myid-2
+  subdomain: zookeeper
+  containers:
+    - name: zookeeper-server
+      image: everpeace/kube-zookeeper:3.4.5
+      env:
+      - name: "KUBE_ZK_MY_ID"
+        value: "2"
+      - name: "KUBE_ZK_MAX_SERVERS"
+        value: "3"
+      - name: "KUBE_ZK_HOSTNAME_PREFIX"
+        value: "myid-"
+      - name: "KUBE_ZK_SUB_DOMAIN"
+        value: zookeeper
+      - name: "NAMESPACE"
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.namespace
+      - name: "CLUSTER_DOMAIN"
+        value: "cluster.local"
+      ports:
+        - containerPort: 2181
+        - containerPort: 2888
+        - containerPort: 3888
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: zookeeper-myid-3
+  labels:
+    component: zookeeper
+    ensemble: zookeeper
+    myid: "3"
+spec:
+  hostname: myid-3
+  subdomain: zookeeper
+  containers:
+    - name: zookeeper-server
+      image: everpeace/kube-zookeeper:3.4.5
+      env:
+      - name: "KUBE_ZK_MY_ID"
+        value: "3"
+      - name: "KUBE_ZK_MAX_SERVERS"
+        value: "3"
+      - name: "KUBE_ZK_HOSTNAME_PREFIX"
+        value: "myid-"
+      - name: "KUBE_ZK_SUB_DOMAIN"
+        value: zookeeper
+      - name: "NAMESPACE"
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.namespace
+      - name: "CLUSTER_DOMAIN"
+        value: "cluster.local"
+      ports:
+        - containerPort: 2181
+        - containerPort: 2888
+        - containerPort: 3888
