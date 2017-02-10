@@ -22,11 +22,11 @@ if [ ! -z "$KUBE_ZK_MY_ID" ] && [ ! -z "$KUBE_ZK_MAX_SERVERS" ]; then
 
   # Persists the ID of the current instance of Zookeeper
   echo ${KUBE_ZK_MY_ID} > /opt/zookeeper/data/myid
+
+  # start up timing jitter among nodes
+  sleep $(( (RANDOM % $KUBE_ZK_MAX_SERVERS) + 1))
   else
 	  echo "Starting up in standalone mode"
 fi
-
-# start up timing jitter
-sleep $(( (RANDOM % $KUBE_ZK_MAX_SERVERS) + 1))
 
 exec /opt/zookeeper/bin/zkServer.sh start-foreground
